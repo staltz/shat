@@ -4,3 +4,6 @@
 - TODO install less css
 - TODO install node-xmpp ## https://github.com/astro/node-xmpp
 - TODO get facebook chat "rooms"
+
+References:
+	https://github.com/ccoenraets/nodecellar
