@@ -1,0 +1,11 @@
+extends base
+
+block endjs
+	script(src="http://static.ak.fbcdn.net/connect/en_US/core.js")
+
+block content
+	#wrapper
+		h1 Shat
+		#fb-login.fb_button
+			a.fb_button_medium(href="/auth/facebook")
+				span#fb_login_text.fb_button_text Connect with Facebook

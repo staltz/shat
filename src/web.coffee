@@ -1,4 +1,3 @@
-nunjucks = require("nunjucks")
 express = require("express")
 everyauth = require("everyauth")
 
@@ -23,25 +22,20 @@ everyauth.facebook
 
 # Setup express middlewares
 app = express()
+app.set('views', __dirname + '/../views')
+app.set('view engine', 'jade')
 app.use(express.logger())
 app.use(express.bodyParser())
 app.use(express.cookieParser("foobie"))
 app.use(express.session())
 app.use(everyauth.middleware())
-env = new nunjucks.Environment(new nunjucks.FileSystemLoader('views'))
-env.express(app)
-
-#app.configure( ->
-#	app.set('view engine', 'jade')
-#	app.set('views', everyauthRoot + '/example/views')
-#)
 
 app.get("/", (req, res, params) ->
 	if req.user
-		res.render("main.html")
+		res.render("main")
 		console.log "user is #{ req.user }"
 	else
-		res.render("fblogin.html")
+		res.render("fblogin")
 	undefined
 )
 
