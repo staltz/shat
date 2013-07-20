@@ -1,8 +1,8 @@
 
 + DONE connect with FB, get user basic profile
 + DONE install jade
-- TODO install bootstrap
-- TODO install less css
+- TODO install less css ## https://github.com/adunkman/connect-assets
+- install bootstrap
 - TODO install node-xmpp ## https://github.com/astro/node-xmpp
 - TODO get facebook chat "rooms"
 
