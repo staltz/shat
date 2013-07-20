@@ -1,5 +1,6 @@
 
-- TODO connect with FB, get user basic profile
++ DONE connect with FB, get user basic profile
+- TODO install jade
 - TODO install bootstrap
 - TODO install less css
 - TODO install node-xmpp ## https://github.com/astro/node-xmpp
