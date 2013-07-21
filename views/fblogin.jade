@@ -4,8 +4,15 @@ block endjs
 	script(src="http://static.ak.fbcdn.net/connect/en_US/core.js")
 
 block content
-	#wrapper
-		h1 Shat
-		#fb-login.fb_button
-			a.fb_button_medium(href="/auth/facebook")
-				span#fb_login_text.fb_button_text Connect with Facebook
+	.container	
+		.row-fluid
+			.span12.centered
+				br
+				br
+				.box
+					h1.shat-title Shat
+					span.muted A better Facebook chat
+					br
+					br
+					br
+					a.btn.btn-large.btn-fb(href="/auth/facebook") Connect with Facebook

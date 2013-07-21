@@ -6,17 +6,17 @@ html(lang="en")
 		title Shat - A better Facebook chat
 		meta(name="description", content="A better Facebook chat")
 		meta(name="viewport", content="width=device-width")
-		link(rel="stylesheet", href="css/normalize.css")
-		link(rel="stylesheet", href="css/main.css")
-		script(src="js/vendor/modernizr-2.6.2.min.js")
+		!= css("normalize.css")
+		!= css("base.css")
+		!= css("main")
+		!= js("vendor/modernizr-2.6.2.min.js")
 	body	
 		block content
 		block endjs
 		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
 		script(type="text/javascript")
 			window.jQuery || document.write("<script src=\"js/vendor/jquery-1.9.1.min.js\"><\/script>")
-		script(src="js/plugins.js")
-		script(src="js/main.js")
+		!= js("plugins.js")
 
 		//- Google Analytics: change UA-XXXXX-X to be your site's ID.
 		//-script(type="text/javascript")
