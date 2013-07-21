@@ -36,7 +36,7 @@ app.use(express.static(__dirname+"/../public"))
 app.get("/", (req, res, params) ->
 	if req.user
 		res.render("main")
-		console.log "user is #{ req.user }"
+		console.log "user is #{ JSON.stringify(req.user) }"
 	else
 		res.render("fblogin")
 	undefined

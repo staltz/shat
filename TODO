@@ -3,6 +3,7 @@
 + DONE install jade
 + DONE install less css ## https://github.com/adunkman/connect-assets
 + DONE install bootstrap
+- TODO Use socket.io and set raw basic chat ## http://net.tutsplus.com/tutorials/javascript-ajax/real-time-chat-with-nodejs-socket-io-and-expressjs/
 - TODO install node-xmpp ## https://github.com/astro/node-xmpp
 - TODO get facebook chat "rooms"
 
