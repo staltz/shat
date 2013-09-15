@@ -1,12 +1,25 @@
 express = require("express")
 everyauth = require("everyauth")
 connectAssets = require("connect-assets")
+redis = require("redis")
+url = require("url")
+
+# Connect to database
+redisCloudURL = url.parse(process.env.REDISCLOUD_URL)
+redisClient = redis.createClient(
+	redisCloudURL.port, 
+	redisCloudURL.hostname,
+	{no_ready_check: true}
+)
+redisClient.auth(redisCloudURL.auth.split(":")[1])
 
 # Setup Facebook auth
 usersById = {} # This is our database lol
 everyauth.everymodule
 	.findUserById( (id, callback) ->
-		callback(null, usersById[id])
+		redisClient.hgetall("user_"+id, (err, obj)->
+			callback(null, obj)
+		)
 )
 everyauth.facebook
 	.appId(process.env.FB_APP_ID)
@@ -14,10 +27,15 @@ everyauth.facebook
 	.scope("email")
 	.fields("id,name,email,picture")
 	.findOrCreateUser( (session, accessToken, accessTokenExtra, fbUserMetadata) ->
-		if usersById[fbUserMetadata.id] != undefined
-			return usersById[fbUserMetadata.id]
-		else
-			return usersById[fbUserMetadata.id] = fbUserMetadata
+		promise = this.Promise()
+		redisClient.hgetall("user_"+fbUserMetadata.id, (err, obj) ->
+			if obj
+				promise.fulfill(obj)
+			else
+				redisClient.hmset("user_"+fbUserMetadata.id, fbUserMetadata)
+				promise.fulfill(fbUserMetadata)
+		)
+		return promise
 	)
 	.redirectPath('/')
 
@@ -48,4 +66,3 @@ app.listen(port, ->
 	console.log("Listening on port #{ port }")
 	undefined
 )
-
