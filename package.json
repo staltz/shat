@@ -12,7 +12,7 @@
 		"connect-assets": "2.5.x",
 		"less": "1.4.x",
 		"coffee-script": "1.6.x",
-		"redis": "0.8.*",
+		"redis": "0.8.*"
 	},
 	"engines": {
 		"node": "0.10.x",
